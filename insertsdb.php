@@ -1,4 +1,5 @@
 <?php
+include 'studentsform.php';
 
 $servername = "localhost";
 $username = "root";
@@ -25,7 +26,31 @@ $query_string = "CREATE TABLE StudentsDetails (
 $result1 = $mysqli -> query($query_string);
 */
 $query_string = "INSERT INTO StudentsDetails (Name,DOB,Phonenumber,Mailid) VALUES ('$sname','$sdob','$sphnumber','$smailid')";
-  $result1 = $mysqli -> query($query_string);
-        
+  $result1 = $mysqli->query($query_string);
+  
+ if( $result1 ){
+?>
+<script>
+  alert("Your Data is Stored Successfully in StudentDatabase ");
+  
+ </script>
+<?php
+
+ }
+ else {
+?>
+ <script>
+  alert("Data not inserted Please try again");	 
+  </script>
+<?php 
+ }
 mysqli_close($mysqli);
 ?>
+
+<html>
+
+ <body>
+ <a href = "studentsfrontpage.html">Front page</a >
+  <button name="show" value="submit" onclick="location.href = 'showsdb.php';">Show</button>
+ </body>
+</html>
